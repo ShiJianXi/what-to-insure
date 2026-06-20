@@ -1,0 +1,29 @@
+/* ==========================================
+   Container Component Styles
+   ========================================== */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* --- Size Variants --- */
+
+.sm {
+  max-width: 640px;
+}
+
+.md {
+  max-width: 896px;
+}
+
+.lg {
+  max-width: var(--container-max-width);
+}
+
+.full {
+  max-width: 100%;
+}

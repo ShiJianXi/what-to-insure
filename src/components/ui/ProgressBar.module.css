@@ -1,0 +1,149 @@
+/* ==========================================
+   ProgressBar Component Styles
+   ========================================== */
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+/* --- Step --- */
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.stepClickable {
+  cursor: pointer;
+}
+
+/* --- Circle --- */
+
+.circle {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.circleCompleted {
+  background-color: var(--color-primary-600);
+  color: var(--color-text-inverse);
+}
+
+.circleCurrent {
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-primary-600);
+  color: var(--color-primary-600);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.circleFuture {
+  background-color: var(--color-gray-200);
+  color: var(--color-text-tertiary);
+}
+
+/* --- Inner dot for current step --- */
+
+.innerDot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-600);
+}
+
+/* --- Checkmark --- */
+
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  line-height: 1;
+}
+
+/* --- Labels --- */
+
+.label {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition-base);
+}
+
+.labelCompleted {
+  color: var(--color-primary-600);
+}
+
+.labelCurrent {
+  color: var(--color-text-primary);
+  font-weight: var(--font-medium);
+}
+
+@media (max-width: 767px) {
+  .label {
+    display: none;
+  }
+}
+
+/* --- Connecting Lines --- */
+
+.lines {
+  position: absolute;
+  top: 16px; /* half of circle height */
+  left: 16px; /* half of first circle */
+  right: 16px; /* half of last circle */
+  height: 2px;
+  display: flex;
+  z-index: 0;
+}
+
+.line {
+  flex: 1;
+  height: 2px;
+  transition: background-color var(--transition-base);
+}
+
+.lineCompleted {
+  background-color: var(--color-primary-600);
+}
+
+.lineFuture {
+  background-color: var(--color-gray-200);
+}
+
+/* --- Pulse Animation --- */
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.08);
+  }
+}

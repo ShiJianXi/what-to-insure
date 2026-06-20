@@ -1,0 +1,221 @@
+/* ==========================================
+   Navbar Component Styles
+   ========================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  height: var(--navbar-height);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- Logo --- */
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  font-size: var(--text-xl);
+  color: var(--color-primary-600);
+  text-decoration: none;
+  letter-spacing: var(--tracking-tight);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Desktop Navigation --- */
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.navLink {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base);
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-gray-50);
+}
+
+.navLinkActive {
+  color: var(--color-primary-600);
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: var(--space-3);
+  right: var(--space-3);
+  height: 2px;
+  background-color: var(--color-primary-600);
+  border-radius: var(--radius-full);
+}
+
+.ctaButton {
+  margin-left: var(--space-2);
+}
+
+/* --- Mobile Menu Toggle --- */
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.menuToggle:hover {
+  background-color: var(--color-gray-100);
+}
+
+.menuToggle:focus-visible {
+  outline: var(--ring-width) solid var(--ring-color);
+  outline-offset: var(--ring-offset);
+}
+
+.menuBar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.menuBar:nth-child(1) {
+  margin-bottom: 5px;
+}
+
+.menuBar:nth-child(3) {
+  margin-top: 5px;
+}
+
+/* Animate to X when open */
+.menuToggleOpen .menuBar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuToggleOpen .menuBar:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggleOpen .menuBar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Mobile Menu Panel --- */
+
+.mobileMenu {
+  display: none;
+  position: absolute;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border-secondary);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4);
+  flex-direction: column;
+  gap: var(--space-1);
+  z-index: var(--z-dropdown);
+  transform: translateY(-8px);
+  opacity: 0;
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.mobileMenuOpen {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobileNavLink {
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.mobileNavLink:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-gray-50);
+}
+
+.mobileNavLinkActive {
+  color: var(--color-primary-600);
+  background-color: var(--color-primary-50);
+}
+
+.mobileCta {
+  margin-top: var(--space-2);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 767px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+}

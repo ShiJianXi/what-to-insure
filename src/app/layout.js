@@ -1,4 +1,6 @@
 import { Inter, Outfit } from 'next/font/google';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import './globals.css';
 
 const inter = Inter({
@@ -42,9 +44,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body>
-        {/* Navbar will be added in Phase 1B */}
-        <main>{children}</main>
-        {/* Footer will be added in Phase 1B */}
+        <Navbar />
+        <main style={{ minHeight: `calc(100vh - var(--navbar-height))` }}>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
